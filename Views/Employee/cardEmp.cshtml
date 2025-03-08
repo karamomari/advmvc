@@ -1,0 +1,20 @@
+﻿@model Employee
+
+<style>
+    .card {
+        margin-left: 85%;
+        margin-top: -6%;
+    }
+
+    .card-img-top{
+        height: 100px;
+    }
+</style>
+<div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="/Image/@Model.ImageURL" alt="Card image cap" >
+  <div class="card-body">
+    <h5 class="card-title">@Model.Name</h5>
+        <p class="card-text"> Address : @Model.Adrress -- Jobrirle : @Model.JobTitle -- Salary : @Model.Salary  </p>
+    <a href="#" class="btn btn-primary">Hiden</a>
+  </div>
+</div>

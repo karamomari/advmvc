@@ -1,0 +1,9 @@
+﻿global using AdvProject.Repository;
+global using AdvProject.Models;
+global using AdvProject.ViewModel;
+global using Microsoft.AspNetCore.Mvc;
+global using Microsoft.AspNetCore.Mvc.ModelBinding;
+global using Microsoft.EntityFrameworkCore;
+global using Newtonsoft.Json;
+global using System.Diagnostics;
+global using AdvProject.Filltter;

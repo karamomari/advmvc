@@ -1,0 +1,15 @@
+﻿@model List<AdvProject.Models.ApplicationUser>
+
+@{
+    if (Model != null && Model.Any()) // الآن `Model` معروف على أنه قائمة ويمكن استدعاء `Any()`
+    {
+        foreach (var item in Model)
+        {
+            <h2>@item.Id --------  @item.UserName</h2>
+        }
+    }
+    else
+    {
+        <h1>No users found</h1>
+    }
+}

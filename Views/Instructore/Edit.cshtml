@@ -1,0 +1,74 @@
+﻿@model AdvProject.Models.Instructore
+
+@{
+    // ViewData["Title"] = "Edit Instructore";
+}
+
+<h1>Edit Instructore</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="salary" class="control-label"></label>
+                <input asp-for="salary" class="form-control" />
+                <span asp-validation-for="salary" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="image" class="control-label"></label>
+                <input asp-for="image" class="form-control" />
+                <span asp-validation-for="image" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="address" class="control-label"></label>
+                <input asp-for="address" class="form-control" />
+                <span asp-validation-for="address" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="grade" class="control-label"></label>
+                <input asp-for="grade" class="form-control" />
+                <span asp-validation-for="grade" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="dept_id" class="control-label">Department</label>
+                <select name="dept_id" class="form-control" >
+                    @foreach (var item in ViewBag.Departments)
+                    {
+                        <option value="@item?.Id">@item?.Name</option>
+                    }
+                </select>
+                <span asp-validation-for="dept_id" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="crs_id" class="control-label">Course</label>
+                <select name="crs_id" class="form-control" >
+                    @foreach (var item in ViewBag.Courses)
+                    {
+                        <option value="@item?.ID">@item?.Name</option>
+                    }
+                </select>
+                <span asp-validation-for="crs_id" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>

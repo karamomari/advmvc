@@ -1,0 +1,58 @@
+﻿@using AdvProject.Models
+@model Employee
+@{
+    ViewData["Title"] = "Add";
+
+    SelectList DepOP = new SelectList(ViewBag.Dep,"Id","Name");
+}
+
+<h1>
+    @ViewBag.co
+</h1>
+
+
+<form asp-action="SaveEmp" asp-controller="Employee" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div>
+        <label asp-for="Name"></label>
+        <input asp-for="Name"  class="form form-control" />
+        <span asp-validation-for="Name"></span>
+    </div>
+    <div>
+        <label asp-for="Salary"></label>
+        <input asp-for="Salary"  class="form form-control" />
+        <span asp-validation-for="Salary" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="JobTitle"></label>
+        <input asp-for="JobTitle"  class="form form-control" />
+        <span asp-validation-for="JobTitle"></span>
+    </div>
+    <div>
+        <label asp-for="Adrress"></label>
+        <input asp-for="Adrress"  class="form form-control" />
+        <span asp-validation-for="Adrress"></span>
+    </div>
+    <div>
+        <label asp-for="ImageURL"></label>
+        <input asp-for="ImageURL"  class="form form-control" required asp- />
+        <span asp-validation-for="ImageURL" class="text-primary"></span>
+    </div>
+
+    <div>
+        <label asp-for="DepartmentID"></label>
+        <select asp-for="DepartmentID" asp-items="DepOP">
+            <option value="-1">-- Select Department --</option>
+        </select>
+        <span asp-validation-for="DepartmentID"></span>
+    </div>
+ 
+    <input type="submit"  value="Create" class="btn btn-success" />
+</form>
+
+<a asp-action="Index" asp-controller="Employee" class="btn btn-danger">Back</a>
+
+
+<script src="/lib/jquery/dist/jquery.min.js"></script>
+<script src="/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="/lib//jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>

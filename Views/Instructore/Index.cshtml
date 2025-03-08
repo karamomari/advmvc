@@ -1,0 +1,46 @@
+﻿@model List<Instructore>
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<a asp-controller="Instructore" asp-action="add"  class="btn btn-primary">Add</a>
+
+@if (Model != null && Model.Any())
+{
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Salary</th>
+                <th scope="col">Address</th>
+                <th scope="col">image</th>
+                <th scope="col">Department Name</th>
+                <th scope="col">course Name</th>
+
+                <th scope="col">
+
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th scope="row">@item.Id</th>
+                    <td>@item.Name</td>
+                    <td>@item.salary</td>
+                    <td>@item.address</td>
+                    <td>@item.image</td>
+                    <td>@(item.department != null ? item.department.Name : "N/A")</td>
+                    <td>@(item.course != null ? item.course.Name : "N/A")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p class="text-danger">No Instructore found.</p>
+}

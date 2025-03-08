@@ -1,0 +1,43 @@
+﻿@model List<Department>
+@{
+    ViewData["Title"] = "Employee and Department";
+}
+
+<select name="Department" id="Department" class="form form-control" onchange="GetEmp()">
+    @foreach (var item in Model) 
+    {
+        <option value="@item.Id">@item.Name</option>
+    }
+</select>
+
+<select name="Emp" id="Emp" class="form form-control">
+    
+    
+</select>
+
+<script src="/lib/jquery/dist/jquery.js"></script>
+<script >
+    function GetEmp() {
+        var id = document.getElementById("Department").value;
+        var selectEmp = document.getElementById("Emp");
+
+        $.ajax({
+            url: "/Employee/GetEmpByIDDep?Depid=" + id,
+            success: function (result) {
+                selectEmp.innerHTML = "";
+
+                if (result.length === 0) {
+                    selectEmp.innerHTML = "<option>No Emp in this Dep</option>";
+                    return;
+                }
+
+                for (let emp of result) {
+                    selectEmp.innerHTML += `<option value="${emp.id}">${emp.name}</option>`;
+                }
+            },
+            error: function () {
+                selectEmp.innerHTML = "<option>Error fetching employees</option>";
+            }
+        });
+    }
+</script>

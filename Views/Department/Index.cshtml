@@ -1,0 +1,53 @@
+﻿@model List<Department>
+@{
+    ViewData["Title"] = "Department Index";
+}
+
+
+
+<table class="table table-dark table-hover">
+    <thead>
+        <tr>
+
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Manger Name</th>
+            <th scope="col">employees in Department  </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>
+                    @item.ManegerName
+                </td>
+                <td>
+
+                @if (item.employees != null && item.employees.Any())
+                {
+                    @foreach (var emp in item.employees)
+                    {
+                            <i>@emp.Name</i>
+                         
+                    }
+                        <i>
+                            @item.employees.Count
+
+                        </i>
+
+                }
+                else
+                {
+                    <span>No Employees</span>
+                }
+               </td>
+            </tr>
+
+
+        }
+    </tbody>
+</table>

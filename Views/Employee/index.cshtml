@@ -1,0 +1,72 @@
+﻿@* @using AdvProject.Models.Employee *@
+@model List<Employee>;
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+<h1>
+    <p> : @ViewBag?.QueryTime ميلي ثانية</p>
+</h1>
+
+<a asp-action="add" asp-controller="Employee" class="btn btn-success">Add Employee</a>
+
+<div class="border:2px solid red ; m-4" id="div1"></div>
+
+@if (Model != null && Model.Any())
+{
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Salary</th>
+                <th scope="col">JobTitle</th>
+                <th scope="col">Department Name</th>
+                <th scope="col">
+
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th scope="row">@item.Id</th>
+                    <td>@item.Name</td>
+                    <td>@item.Salary</td>
+                    <td>@item.JobTitle</td>
+                    @* <td>@item.Department?.Name</td> *@
+                    <td>@(item.Department != null ? item.Department.Name : "N/A")</td>
+                    <td>
+                        <a asp-controller="Employee" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+
+                    </td>
+                    <td>
+                        <a onclick="GetDetalis(@item.Id)" >Get Details</a>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p class="text-danger">No employees found.</p>
+}
+
+<script src="/lib/jquery/dist/jquery.js"></script>
+<script>
+function GetDetalis(Id){ 
+    event.preventDefault();
+        $.ajax({
+            url: "/Employee/partialdet/" + Id, 
+              success: function (result) {
+                $("#div1").html(result);
+            }
+        });
+}
+
+</script>

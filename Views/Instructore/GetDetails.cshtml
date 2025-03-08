@@ -1,0 +1,67 @@
+﻿@model AdvProject.Models.Instructore
+
+@{
+    ViewData["Title"] = "تفاصيل الموظف";
+}
+
+<h1>تفاصيل الموظف</h1>
+
+<div>
+    <h4>@Model.Name</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Name:
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Name
+        </dd>
+
+        <dt class="col-sm-2">
+            Salary:
+        </dt>
+        <dd class="col-sm-10">
+            @Model.salary
+        </dd>
+
+        <dt class="col-sm-2">
+            Address:
+        </dt>
+        <dd class="col-sm-10">
+            @Model.address
+        </dd>
+
+        <dt class="col-sm-2">
+            Image:
+        </dt>
+        <dd class="col-sm-10">
+            @if (!string.IsNullOrEmpty(Model.image))
+            {
+                <img src="/Image/@Model.image" alt="صورة الموظف" style="max-width: 200px;" />
+            }
+            else
+            {
+                <span> Not faund</span>
+            }
+        </dd>
+
+        <dt class="col-sm-2">
+            Department:
+        </dt>
+        <dd class="col-sm-10">
+            @Model.department?.Name <!-- عرض اسم القسم -->
+        </dd>
+
+        <dt class="col-sm-2">
+            Course:
+        </dt>
+        <dd class="col-sm-10">
+            @Model.course?.Name <!-- عرض اسم الكورس -->
+        </dd>
+    </dl>
+</div>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">تعديل</a>
+    <a asp-action="Index" class="btn btn-secondary">العودة إلى القائمة</a>
+</div>

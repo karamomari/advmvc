@@ -1,0 +1,28 @@
+﻿@model AdvProject.ViewModel.LoginViewModel
+@{
+
+}
+
+<form asp-action="Savelogin" asp-controller="Account" method="post">
+
+    <div class="mb-3">
+        <label asp-for="UserName" class="form-label">Username</label>
+        <input asp-for="UserName" class="form-control" placeholder="Enter your username">
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="password" class="form-label">Password</label>
+        <input asp-for="password" class="form-control" placeholder="Enter your password">
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Remberme" class="form-label">Remberme</label>
+        <input asp-for="Remberme" class="form-check-input">
+    </div>
+    <button type="submit" class="btn btn-success">Login</button>
+
+</form>
+
+<script src="/lib/jquery/dist/jquery.min.js"></script>
+<script src="/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="/lib//jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>

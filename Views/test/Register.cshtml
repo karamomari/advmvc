@@ -1,0 +1,39 @@
+﻿@model RegisterUserViewModel
+
+<h2>Register</h2>
+
+<form asp-action="SaveRegister" asp-controller="test" method="post">
+    <div asp-validation-summary="All">  </div>
+    <div class="form-group">
+        <label asp-for="UserName"></label>
+        <input asp-for="UserName" class="form-control" />
+        <span asp-validation-for="UserName"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Password"></label>
+        <input asp-for="Password" type="password" class="form-control" />
+        <span asp-validation-for="Password"></span>
+
+    </div>
+
+    <div class="form-group">
+        <label asp-for="PasswordConfirmed"></label>
+        <input asp-for="PasswordConfirmed" type="password" class="form-control" />
+        <span asp-validation-for="PasswordConfirmed"></span>
+
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Address"></label>
+        <input asp-for="Address" class="form-control" />
+        <span asp-validation-for="Address"></span>
+
+    </div>
+
+    <button type="submit" class="btn btn-primary">Register</button>
+</form>
+
+<script src="/lib/jquery/dist/jquery.min.js"></script>
+<script src="/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="/lib//jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
